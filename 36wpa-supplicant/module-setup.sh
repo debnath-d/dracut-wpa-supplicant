@@ -20,7 +20,7 @@ depends() {
 install() {
     inst wpa_supplicant
 
-    inst /usr/lib/systemd/system/wpa_supplicant.service
+    inst "$moddir"/wpa_supplicant.service "$systemdsystemunitdir"/wpa_supplicant.service
     inst /usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service
     inst /usr/share/dbus-1/system.d/wpa_supplicant.conf
 

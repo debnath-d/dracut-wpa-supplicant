@@ -1,0 +1,19 @@
+[Unit]
+DefaultDependencies=no
+Wants=systemd-udev-trigger.service
+After=systemd-udev-trigger.service
+After=dracut-cmdline.service
+After=dbus.service
+Wants=network.target
+Before=network.target
+IgnoreOnIsolate=true
+
+[Service]
+Type=dbus
+BusName=fi.w1.wpa_supplicant1
+ExecStart=/usr/bin/wpa_supplicant -u -s -O /run/wpa_supplicant
+Restart=on-failure
+
+[Install]
+WantedBy=initrd.target
+Alias=dbus-fi.w1.wpa_supplicant1.service
